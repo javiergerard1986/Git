@@ -62,3 +62,13 @@ git remote add origin https://github.com/javiergerard1986/Git.git
 4. Pushear archivos del repositorio local al repositorio remoto:
 
 git push -u origin master
+
+5.Bajarnos addendas del repositorio remoto para sincronizarlo con el local:
+git pull origin master
+
+-----------------------------------------------------------
+Help
+-----------------------------------------------------------
+Si necesitamos saber informacion de algun comando, utilizar el comando git help, esto nos mostrara un listado con las explicaciones de cada comando de git.
+A este comando se le puede sumar el parametro --all para que de la totalidad de la informacion de todos los comandos de git
+Para buscar ayuda por un comando especifico ejecutar git help --<comando>, ejemplo git help --push
