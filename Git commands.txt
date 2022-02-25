@@ -37,3 +37,28 @@ cuando un archivo se muestra en color verde, quiere decir que esta en stage
 - Mover archivos de Stage al Local Repository:
 git commit -m "<commitMessage>"
 git commit, abre un bin con lo que se va a committear, ahi agregamos en la primera linea el comentario, y para guardar presionamos la tecla escape, y posteriormente :wq y damos enter. Ahi se guarda y se commitea.
+
+- Como ver el historial y estado de los commits:
+git log
+
+-----------------------------------------------------------
+Crear proyecto remoto y conectarlo al proyecto local
+-----------------------------------------------------------
+1. Ingresar a github y loguearnos
+2. Crear repositorio, nos mostrara la siguiente informacion
+echo "# Git" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/javiergerard1986/Git.git
+git push -u origin main
+
+
+3. Ejecutar siguiente comando para linquear los repositorios:
+git remote add origin https://github.com/javiergerard1986/Git.git
+(comando git remote -v sirve para ver a que repositorio remoto esta sincronizado nuestro repositorio local).
+
+4. Pushear archivos del repositorio local al repositorio remoto:
+
+git push -u origin master
