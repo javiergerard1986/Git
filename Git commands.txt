@@ -1,0 +1,39 @@
+-----------------------------------------------------------
+Estos pasos los ejecutamos por unica vez al instalar git
+-----------------------------------------------------------
+- Setear nombre el usuario que esta usando git:
+git config --global user.name "Javier Gerard" 
+
+- Setear email del usuario de git:
+git config --global user.email "javiergerard1986@gmail.com"
+
+- Para ver la configuracion de git
+git config --list
+
+-----------------------------------------------------------
+Estados de GIT
+-----------------------------------------------------------
+Working Directory
+			git add
+Stage
+			git commit
+Local repository
+
+-----------------------------------------------------------
+Base commands
+-----------------------------------------------------------
+- Crear proyecto de git
+git init
+
+- Mover un archivo del estado Working Directory a Stage:
+a) Agregar archivo especifico de WD a S: git add <fileName>
+b) Agregar todos los archivos del W a S: git add * or git add --all
+
+- Conocer la situacion (estado) de los diferentes archivos en nuestro proyecto git:
+git status
+cuando un archivo se muestra en color rojo, quiere decir que esta en el working directory
+cuando un archivo se muestra en color verde, quiere decir que esta en stage
+
+- Mover archivos de Stage al Local Repository:
+git commit -m "<commitMessage>"
+git commit, abre un bin con lo que se va a committear, ahi agregamos en la primera linea el comentario, y para guardar presionamos la tecla escape, y posteriormente :wq y damos enter. Ahi se guarda y se commitea.
