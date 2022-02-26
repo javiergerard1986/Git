@@ -1,0 +1,32 @@
+--------------------------------------------------------------------------------
+Remover archivos trackeados y no trackeados del Working Directory area
+--------------------------------------------------------------------------------
+git clean -f: con este comando borramos todos los cambios que estan en el Working Directory
+El Working Directory se divide en 2 estados: archivos trackeados y archivos no trackeads.
+Los trackeados son los archivos modificados, que git ya tiene un registro de ellos. Los no trackeados son los archivos nuevos, que nunca fueron commiteados.
+El comando git clean, lo que hace es eliminar todos los archivos NO TRACKEADOS.
+git clean -n, con el parametro -n se lista lo que se borraria en caso de ejecutar el comando git clean (el uso de este parametro es solamente para listar, no borra).
+
+Ojo con utilizar este comando, porque hay archivos que no se trackean de forma intencional, como ser aquellos definidos en el .gitIgnore. Es por esto que siempre es bueno
+listar los elementos a borrar, antes de ejecutar el comando git clean -f.
+
+- Eliminar archivos trackeados del Working Directory, para esto utilizamos el comando checkout: git checkout <nombreArchivo>
+
+--------------------------------------------------------------------------------
+Mover archivos del Stage area al Working Directory area
+--------------------------------------------------------------------------------
+Para esto utilizamos el comando git reset, ejemplo: git reset HEAD .\archito.txt
+Al ejecutar el comando git status, lo que se muestra en color rojo son los archivos en la etapa del Working Directory, los que esten en color en verde son los archivos en el area de Stage.
+
+--------------------------------------------------------------------------------
+Mover archivos del local repository area al Stage area
+--------------------------------------------------------------------------------
+Para esto tenemos que utilizar el comando git revert, lo que este comando hace es remover todos los camnbios realizados en el ultimo commit, y crea un nuevo commit, con los cambios realizados por el revert en cuestion.
+1. Realizamos 5 commits.
+2. Ejecutamos el comando git log para obtener el listado de commits realizados.
+3. Ahora vamos a volver al commit numero 3, para esto tenemos que obterner el hash code del commit numero 3, que obtenemos a partir del comando git log.
+4. Ejecutamos el comando git revert <hash del commit3>
+	4.1. Al ejecutar este comando, se nos abre una pantalla visualizando el conflicto (la diferencia entre el commit 5 y lo que habia en el commit 3).
+	Dado que nos queremos quedar con el commit 3, vamos a aceptar la version que viene del servidor.
+	4.2. Hasta aqui volvimos a la version anterior en el repositorio local, pero aun no hemos commiteado este cambio, si en este momento hacemos un git status,
+	vamos a ver que tenemos un archivo untrackeado (el que resolvimos el conflicto para quedarnos con la version del commit 3, posteriormente pasamos a stage y commiteamos.

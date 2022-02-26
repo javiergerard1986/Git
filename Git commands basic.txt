@@ -1,0 +1,74 @@
+-----------------------------------------------------------
+Estos pasos los ejecutamos por unica vez al instalar git
+-----------------------------------------------------------
+- Setear nombre el usuario que esta usando git:
+git config --global user.name "Javier Gerard" 
+
+- Setear email del usuario de git:
+git config --global user.email "javiergerard1986@gmail.com"
+
+- Para ver la configuracion de git
+git config --list
+
+-----------------------------------------------------------
+Estados de GIT
+-----------------------------------------------------------
+Working Directory
+			git add
+Stage
+			git commit
+Local repository
+
+-----------------------------------------------------------
+Base commands
+-----------------------------------------------------------
+- Crear proyecto de git
+git init
+
+- Mover un archivo del estado Working Directory a Stage:
+a) Agregar archivo especifico de WD a S: git add <fileName>
+b) Agregar todos los archivos del W a S: git add * or git add --all
+
+- Conocer la situacion (estado) de los diferentes archivos en nuestro proyecto git:
+git status
+cuando un archivo se muestra en color rojo, quiere decir que esta en el working directory
+cuando un archivo se muestra en color verde, quiere decir que esta en stage
+
+- Mover archivos de Stage al Local Repository:
+git commit -m "<commitMessage>"
+git commit, abre un bin con lo que se va a committear, ahi agregamos en la primera linea el comentario, y para guardar presionamos la tecla escape, y posteriormente :wq y damos enter. Ahi se guarda y se commitea.
+
+- Como ver el historial y estado de los commits:
+git log
+
+-----------------------------------------------------------
+Crear proyecto remoto y conectarlo al proyecto local
+-----------------------------------------------------------
+1. Ingresar a github y loguearnos
+2. Crear repositorio, nos mostrara la siguiente informacion
+echo "# Git" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/javiergerard1986/Git.git
+git push -u origin main
+
+
+3. Ejecutar siguiente comando para linquear los repositorios:
+git remote add origin https://github.com/javiergerard1986/Git.git
+(comando git remote -v sirve para ver a que repositorio remoto esta sincronizado nuestro repositorio local).
+
+4. Pushear archivos del repositorio local al repositorio remoto:
+
+git push -u origin master
+
+5.Bajarnos addendas del repositorio remoto para sincronizarlo con el local:
+git pull origin master
+
+-----------------------------------------------------------
+Help
+-----------------------------------------------------------
+Si necesitamos saber informacion de algun comando, utilizar el comando git help, esto nos mostrara un listado con las explicaciones de cada comando de git.
+A este comando se le puede sumar el parametro --all para que de la totalidad de la informacion de todos los comandos de git
+Para buscar ayuda por un comando especifico ejecutar git help --<comando>, ejemplo git help --push
