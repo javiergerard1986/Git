@@ -30,3 +30,11 @@ Para esto tenemos que utilizar el comando git revert, lo que este comando hace e
 	Dado que nos queremos quedar con el commit 3, vamos a aceptar la version que viene del servidor.
 	4.2. Hasta aqui volvimos a la version anterior en el repositorio local, pero aun no hemos commiteado este cambio, si en este momento hacemos un git status,
 	vamos a ver que tenemos un archivo untrackeado (el que resolvimos el conflicto para quedarnos con la version del commit 3, posteriormente pasamos a stage y commiteamos.
+
+Lo importante en estos escenarios, es que queda registrado en el git log, que se revirtio un commit.
+
+--------------------------------------------------------------------------------
+Renombrar archivos en un repositorio
+--------------------------------------------------------------------------------
+Para esto vamos a tener que utilizar el comando git mv, ejemplo: git mv <fileName> <newFileName>
+Git mv es un atajo, lo que hace es: git add nuevo_nombre y despues git rm viejo_nombre
