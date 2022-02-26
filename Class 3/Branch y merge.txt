@@ -1,0 +1,81 @@
+---------------------------------------------------------
+Crear branch
+---------------------------------------------------------
+git branch: con este comando vamos a listar todas las ramas exitentes en nuestro local repository. La rama en la que estemos parados se va a mostrar con un asterico.
+
+git branch <branchName>: con este comando estariamos creando una nueva rama (al crear una rama, git no se mueve de forma automatica a la rama creada, para esto hay que ejecutar el comando git checkout <nombreRma>
+Para crear la rama y moverse automaticamente hay que usar el parametro -b, ejemplo: git branch -b <branchName>
+
+git checkout <branchName>: con esto comando nos movemos a la rama especificada
+
+git branch -d <branchName>: comando para borrar rama
+
+git branch -m <oldBranchName> <newBranchName>: comando para renombrar el nombre de una rama
+
+(comando git log solamente muestra los commits de las ramas donde estemos parados)
+
+git checkout <commitSHA1>: con este comando nos vemos al commit especificado por el SHA1. Si queremos retornar al ultimo commit realizado en la rama en cuestion (al mas nuevo)
+basta con ejectuar el comando git checkout master
+
+Para viajar entre ramas, git checkout <branchName>, para viajar entre commits de una rama, git checkout <commitSHA1>
+
+---------------------------------------------------------
+Git merge
+---------------------------------------------------------
+El comando git merge se utilizar para mergear codigo entre 2 ramas (codigo de una historia a codigo de master).
+
+El merge afecta 1 rama (master), y no afecta a la rama de la historia que se va a mergear.
+
+Todos los commits tiene 1 solo padre, a no ser los commits que son un MERGE, los cuales va a tener 2 hijos (la rama master y la de la rama de la historia).
+El git merge va a generar 1 nuevo commit con 2 hijos, SI y SOLO SI, en el branch master hay un commit nuevo posterior al de la creacion de la rama.
+Si se quiere hacer un git merge de una rama a master, sin que haya un commit nuevo en master en el momento de la creacion de la rama, el nuevo commit a master va a tener
+1 solo hijo, esto es asi, porque al no detectar un nuevo commit previo en master, lo que hace es mover el codigo a master y generar 1 nuevo commit.
+Ejemplo:
+
+MASTER	Commit 1	GitMergeRamaNueva		En este ejemplo se hace el commit que tiene un solo hijo, GitMergeRamaNueva apunta al Commit 1 de master
+	
+	RamaNueva
+
+
+MASTER Commit 1		CommitOtroUsuario	GitMergeRamaNueva	En este ejemplo se hace el 1 nuevo commit de ramaNueva en master, que tiene 2 hijos. El de la rama nueva y el del CommitOtroUsuario
+
+	RamaNueva
+Mergear: Estando parados en la rama master, git merge <branchNameToMerge>.
+
+---------------------------------------------------------
+Git stash
+---------------------------------------------------------
+- git stash: sirve para guardar el codigo de una rama que no esta commiteado.
+- git stash pop: este comando sive para cargar la informacion que el stash contenia.
+
+El stash es un pila, son eventos que se van guardando en la pila, el primer en entrar es el primero que va a salir cuando hagamos el git stash pop
+
+Ejemplo: Comment Line1, git stash
+	 Comment line2, git stash
+
+Cuando hagamos git stash pop, primero se va a restablecer el ultimo evento que entro, o sea el Comment line2
+
+- git stash list: este comando sirve para listar todos los eventos guardados en la pila de stash
+- git stash clear: para limpiar la pila de stash
+
+---------------------------------------------------------
+Git tags
+---------------------------------------------------------
+Git tiene la habilidad de marcar puntos importantes en la historia de una rama, para ello es que usaremos los TAGs.
+Un TAG no tiene historia, lo unico que tiene un tag es un puntero a un commit, pero no tiene el historial de todo lo previo a ese commit
+
+- git tag <tagName>: comando para crear un tag ligero.
+- git tag -a <tagName> -m "<tagDescription>""este es un tag anotado
+
+La diferencia entre los tags es la cantidad de informacion que se puede guardar en ellos. En los ligeros solamente un nombre de tag, en los anotados se puede agregar mas metadata, como ser un comentario.
+
+- git tag: comando para listar todos los tags existentes.
+
+- Etiquetar un commit con un tag existente: git tag -a <tagName> -m "tagDescription" <commitSHA1>
+
+Una vez etiquetado un commit, podemos navegar hacia un commit, a traves del tag que lo identifica, ejemplo: git checkout <tagName>
+
+- git show <tagName>: nos muestra la informacion del tag y del commit al que apunta.
+
+- git tag -d <tagName>: borrar tag
+- 
