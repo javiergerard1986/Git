@@ -1,0 +1,36 @@
+----------------------------------------------
+GIT SHOW
+----------------------------------------------
+Este comando nos va a permitir ver informacion sobre objetos TAGS y commits. Nos permite ver metadata y cambios de contenidos de archivos.
+Uso del comando:
+- git show <commitHash>: nos muestra informacion del commit (metadata), y ademas los cambios realizados en el commit en cuestion.
+- git show <tagName>: nos muestra la informacion del tag, como ser: nombre del tag, el creador, la fecha, y los cambios realizados en el commit al que se asocio el tag.
+
+----------------------------------------------
+GIT DIFF
+----------------------------------------------
+Este comando nos permite ver los cambios realizados entre 2 fuentes de datos (archivos, commits, etc.).
+Si en el uso del comando git diff, solamente se especifica una fuenta de datos, se va a proceder a realizar la comparacion entre el commit donde estas parado vs la fuente de datos especificada.
+Ejemplo de uso:
+git diff <commitHash1> <commitHash2>
+
+----------------------------------------------
+GIT SHORTLOG
+----------------------------------------------
+Este comando resume el output del comando git log.
+Este comando lo que hace es ordenar el output del git log por le nombre del autor, y va a mostrar solamente el commit message de cada commit por autor.
+Uso del comando:
+- git shortlog
+- git shorlog --summary --numbered, estos parametros nos sirve para obtener la cantidad de commits por autor
+
+----------------------------------------------
+GIT DESCRIBE
+----------------------------------------------
+Este comando nos busca el tag mas reciente desde un commit.
+Uso del comando: git describe
+Output: nombre del tag
+	cantidad de commits que hubieron desde la creacion del tag
+	identificador unico
+	ejemplo: <tagName>-<commitNumberFromTagCreation>-<uniqueID>
+En caso de que no haya otro commit desde la creacion del tag, si hacemos un git describe, el output sera solamente el <tagName>
+
