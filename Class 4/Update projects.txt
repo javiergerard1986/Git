@@ -1,0 +1,79 @@
+------------------------------------
+GIT REMOTE
+------------------------------------
+Git remote nos sirve para crear ver y eliminar conexiones a repositorios remotos.
+- git remote: este nos permite ver el conjunto de repositorios remotos vinculados a nuestro repositorio local.
+- git remote -v: nos da el listado de repositorios remotos vinculados a nuestro repositorio local, y nos da mas informacion al respecto.
+
+Posteriormente naveegamos a github y creamos un repositorio remoto.
+- git remote add origin <remoteRepositoryURL>: con este comando procedemos a vincular el repositorio local con el repositorio remoto.
+
+Si queremos vincular nuestro repositorio local a diferentes repositorios remotos, podemos hacer lo siguiente:
+- git remote add origin <urlRemoteRepository1>
+- git remote add upstream <urlRemoteRepository2>
+
+Si posteriormente ejecutamos el comando git remote -v veremos que el repositorio local esta vinculado a dos repositorios remotos, origin y upstream.
+Posteriormente vamos a poder hacer push, pull, etc, hacia el puntero remoto que nosotros seleccionemos, ejemplo: git pull upstream master, git push origin master
+
+------------------------------------
+GIT CLONE
+------------------------------------
+- git clone <urlProject>: este comando clona un proyecto remoto, creando un repositorio local en la maquina del usuario.
+La clonacion tambien puede darse por medio de  SSH.
+
+- git clone <sshURL>: para este caso vamos a tener que crearnos una ssh key.
+
+Para saber si tenemos creada alguna ssh key hay que listarlas, para ello utilizamos el comando: "ls ~/.ssh", si tenemos un archivo llamado "id_rsa" and "id_rsa.pub" quiere decir que ya tenemos creadas SSH para utilizar con git.
+
+En caso de no tener creada una clave SSH, la crearemos por medio del siguiente comando: 
+1. ssh-keygen -t rsa -b 4086 -C "<userEmailRegistered in gitlab>"
+2. Navegamos hacia la ruta donde se guardo el archivo id_rsa.pub
+3. Lo abrimos y copiamos el contenido del archivo
+4. Nevegar a gitHub, usuario y Settings, SSH y GPG Keys
+5. New SSH Key
+6. Add SSH Key
+
+Tras agregar la SSH a github vamos a poder clonar el proyecto por medio de la SSH url, y ya no se nos solicitara usuario y contrasenna cada vez que queramos hace run push, pull, clone, etc.
+
+------------------------------------
+GIT FETCH Y PULL
+------------------------------------
+El comando GIT FETCH estaremos descargando los commits, archivos y referencias de un repositorio remoto, hacia un repositorio local.
+Es el comando para descargar cambios desde otro repositorio.
+
+FETCH: hacemos fetch cuando queremos ver cambios que los demas desarrolladores estan haciendo en el repositorio remoto.
+Cuando usas FETCH se descarga el contenido del repositorio remoto, sin actualizar los cambios de tu repositorio local.
+Cuando haces PULL se descarga el contenido del repositorio remoto, y los mezcla con tu repositorio local.
+
+Uso del comando: git fetch origin master
+
+Moverse a un archivo que se agrego de forma remota, y se trajo al repositorio local con un fetch: git checkout origin/master
+
+Resumen: el fetch te baja los cambios del remoto, sin mergear los cambios remotos con el repositorio local, por esto esta es la forma segura de bajarse los cambios de un repositorio remoto.
+Posteriormente nos podemos mover a la rama de master que bajamos: git checkout origin/master
+Y posteriormente procedemos a mergear: git merge origin/master
+
+PULL: El comando hace FETCH y PULL del contenido de un repositorio remoto, y los mergea de forma automatica.
+Ejemplo de uso: git pull origin master
+Pull hace: git fetch origin master y despues git merge origin master
+
+------------------------------------
+GIT PUSH
+------------------------------------
+Este comando lo utilizaremos para enviar cambios del repositorio local al repositorio remoto.
+Ahora hablaremos el push fast forward, esto es cuando queremos mergear algo sin que haya habido un commit en el remoto, desde que creamos la nueva rama.
+1. Hacemos cambio
+2. git add <nombreArchivo>
+3. git commit -m "<commitMessage>"
+4. git push origin master
+
+Ahora hablaremos del segundo ejemplo, que es un push que involucra un merge recursivo. Este es que desde que el momento que creamos la rama a mergear, se introdujeron commits en el repositorio remoto, que nosotros no tenemos:
+1. Hacemos cambio
+2. git add <nombreArchivo>
+3. git commit -m "<commitMessage>"
+4. si aca hacemos git push origin master, va a fallar, porque no tenemos todos los cambios del repositorio remoto.
+Aqui hay dos opciones:
+4.1. git pull origin master, y posteriormente solucionamos los conflictos en el repositorio local (si existen), y despues pusheamos los cambios.
+4.2. git push --force origin master, problema: esto elimina cualquier commit del repositorio remoto que no este en el repositorio local, y esto no es permitido, porque se estaria eliminando el trabajo de otros companneros que no esten en nuestro proyecto local.
+
+
