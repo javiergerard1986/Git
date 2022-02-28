@@ -1,0 +1,74 @@
+-----------------------------------------
+GIT BLAME
+-----------------------------------------
+Uso del comando:
+- git blame <fileName>
+
+Este comando nos sirve para identificar que persona y en que commits realizo cambios en un archivo.
+
+git blame -l 3,5 <fileNAme>
+Con el uso del parametro -l y especificando desde, hasta, el comando git blame nos mostrara las diferencias en el archivo seleccionado, entre las lineas especificadas.
+
+-----------------------------------------
+GIT GREP
+-----------------------------------------
+Este comando nos permite imprimir lineas que coincidan con un patron especificado.
+
+Uso del comando:
+git grep <patronABuscar>
+
+Ejemplo: git grep modificada
+
+Este ejemplo nos retornara todos los archivos que tengan la palabra "modificada"
+
+Parametros:
+-n: nos dice el archivo y la linea donde aparece
+-c: nos dice el archivo donde aparece y la cantidad de veces donde aparece.
+-c y commit hash: grip grep -c <commitHash>, nos dice la cantidad de veces que aparece la busqueda en cada archivo, del commit hash especificado.
+
+
+-----------------------------------------
+HEAD
+-----------------------------------------
+El HEAD es un apuntado al commit actual en el que estamos parados.
+Como vimos previamente podemos mover el head de donde estamos parados con el comando git checkout.
+
+Uso del comando: git checkout HEAD~2
+
+Ejemplo:
+Commit 1   - Este es el commit mas nuevo, el ultimo que hicimos y en el que estamos parados.
+Commit 2
+Commit 3
+
+Estamos parados en el commit 1, para movernos al Commit 3, podemos hacer: git checkout HEAD~2, con esto nos movemos al commit abuelo de commit 1.
+
+-----------------------------------------
+GIT IGNORE
+-----------------------------------------
+1. Crear archivo .gitIgnore
+2. Para agrear comentarios en el archivo, es comenzando la linea con el caracter #
+
+Este archivo nos servira para especificar todos los archivos que no queremos que se trackeen en el working directory.
+Cada vez que se haga un cambio en alguno de los archivos especificados en el gi
+t ignore, el working directory va a ignorarlos, y considerara que no se realizaron cambios en las rutas especificadas.
+Ejemplo:
+1. En la ruta del proyecto creamos el archivo .gitignore
+2. En la ruta del proyecto creamos la carpeta images
+
+3. En la carpeta images agregamos 2 archivos mas
+4. GIT identifica 2 archivos creados
+5. En el archivo .gitignore agregamos la linea imagenes/ y salvamos
+6. GIT deja de identificar los 2 archivos que agregamos en el paso 3, como cambios en el working directory.
+
+Cabe decir que en general como por ejemplo, se suele agregar al gitignore la carpeta node_modules, que es la que contiene todas las librerias que nuestro proyecto necesitara para trabajar
+
+-----------------------------------------
+GIT ALIAS
+-----------------------------------------
+El comando git alias nos sirve para poder guardar comandos (por ejemplo que son largos) bajo un alias.
+Ejemplo: queremos hacer volver del estado de stage, un archivo al working directory. Para ello vamos a tener que ejecutar el comando: git reset HEAD <nombre archivo>
+
+Lo que podemos hacer es guardar bajo un alias la seccion: reset HEAD del comando:
+git config --global alias.unstage 'reset HEAD'
+
+Posteriormente podemos unstagear el archivo ejecutando el alias de la siguiente manera: git unstage <nombre archivo>
