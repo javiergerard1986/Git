@@ -1,0 +1,35 @@
+----------------------------------------
+GITHUB
+----------------------------------------
+Es una plataforma donde vamos a poder alocar nuestro codigo.
+En esta plataforma varias personas pueden contribuir con el codigo de un proyecto, por medio del uso de un repositorio remoto.
+
+Tanto GitLab como GitHub con platataformas basados en GIT.
+
+En el repositorio remoto (github en este caso), no existen los 3 estados del WD, S y LR que tenemos en el repositorio loca. Aqui para cada cambio se realiza un commit.
+
+----------------------------------------
+FORK
+----------------------------------------
+Es una funcionalidad basada en github.
+Al hacer un FORK se hace un clone de un repositorio de una organizacion, hacia tu propio usuario.
+Ejemplo: org/repositorio1
+Con el fork te clonas el repositorio remoto a tu cuenta:
+Ejemplo: javier/repositorio1
+
+Posteriormente yo hago un Pull Request, desde mi fork, hacia el repositorio remoto de la organizacion.
+
+----------------------------------------
+ISSUES
+----------------------------------------
+Es el issue tracker de github.
+Asi como existen herramientas de tickets management como ser JIRA, en github el trackeo de issues se hace mediante la seccion ISSUES.
+
+----------------------------------------
+TAGS Y RELEASES
+----------------------------------------
+Cuando un usuario hace PULLs de su repositorio local al remoto, los tags no se pushean al repositorio remoto.
+Para que se pusheen los tags, al push le tenemos que pasar el parametero --tags, ejemplo: git push origin master --tags
+
+La diferencia entre TAG y RELEASE en github, es que TAG es un concepto especifico de GIT. En GITHHUB una release tiene mayor informacion que un tag. Se le puede poner descripcion, etc.
+Release es un concepto de GITHUB, mientras que TAGS es un concepto de GIT.
